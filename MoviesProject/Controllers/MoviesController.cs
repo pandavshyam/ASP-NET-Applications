@@ -34,5 +34,38 @@ namespace MoviesProject.Controllers
             var movie = allMovies.Find(c => c.Id == Id);
             return View("Details",movie);
         }
+
+        public ActionResult Edit(int Id)
+        {
+            var movie = allMovies.Find(c => c.Id == Id);
+            return View("Edit", movie);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Movie m)
+        {
+            var movie = allMovies.Find(c => c.Id == m.Id);
+            allMovies.Remove(movie);
+            allMovies.Add(m);
+            return RedirectToAction("AllMovies");
+        }
+
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Create(Movie m)
+        {
+            allMovies.Add(m);
+            return RedirectToAction("AllMovies");
+        }
+
+        public ActionResult Delete(int Id)
+        {
+            allMovies.Remove(allMovies.Find(c => c.Id == Id));
+            return RedirectToAction("AllMovies");
+        }
     }
 }
