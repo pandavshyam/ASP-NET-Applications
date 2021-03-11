@@ -9,6 +9,7 @@ namespace MoviesProject.Controllers
 {
     public class MoviesController : Controller
     {
+        static private int counter = 5;
         // GET: Movies
         static List<Movie> allMovies = new List<Movie>()
         {
@@ -35,32 +36,52 @@ namespace MoviesProject.Controllers
             return View("Details",movie);
         }
 
-        public ActionResult Edit(int Id)
-        {
-            var movie = allMovies.Find(c => c.Id == Id);
-            return View("Edit", movie);
-        }
+        // Edit using extra View
+        //public ActionResult Edit(int Id)
+        //{
+        //    var movie = allMovies.Find(c => c.Id == Id);
+        //    return View("Edit", movie);
+        //}
 
-        [HttpPost]
-        public ActionResult Edit(Movie m)
-        {
-            var movie = allMovies.Find(c => c.Id == m.Id);
-            allMovies.Remove(movie);
-            allMovies.Add(m);
-            return RedirectToAction("AllMovies");
-        }
+        // Edit using extra View
+        //[HttpPost]
+        //public ActionResult Edit(Movie m)
+        //{
+        //    var movie = allMovies.Find(c => c.Id == m.Id);
+        //    allMovies.Remove(movie);
+        //    allMovies.Add(m);
+        //    return RedirectToAction("AllMovies");
+        //}
 
         public ActionResult Create()
         {
-            return View("Create");
+            return View("Create",new Movie { Id = 0});
         }
 
         [HttpPost]
         public ActionResult Create(Movie m)
         {
-            allMovies.Add(m);
+            if (m.Id <= 0)
+            {
+                m.Id = ++counter;
+                allMovies.Add(m);
+            }
+            else
+            {
+                var movie = allMovies.Find(c => c.Id == m.Id);
+                allMovies.Remove(movie);
+                allMovies.Add(m);
+            }
             return RedirectToAction("AllMovies");
         }
+
+        public ActionResult Edit(int Id)
+        {
+            var movie = allMovies.Find(c => c.Id == Id);
+            return View("Create", movie);
+        }
+
+
 
         public ActionResult Delete(int Id)
         {
