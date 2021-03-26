@@ -17,3 +17,6 @@
 5. [Where Clause](https://github.com/pandavshyam/ASP-NET-Applications/blob/master/LINQ/Problem5.cs)
 6. [UpperCase, LowerCase](https://github.com/pandavshyam/ASP-NET-Applications/blob/master/LINQ/Problem6.cs)
 7. [ThenBy](https://github.com/pandavshyam/ASP-NET-Applications/blob/master/LINQ/Problem7.cs)
+---
+## RESTful API
+1. [Using Static Data](https://github.com/pandavshyam/ASP-NET-Applications/tree/master/RESTfulAPI_Using_StaticData)
