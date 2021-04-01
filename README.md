@@ -20,3 +20,4 @@
 ---
 ## RESTful API
 1. [Using Static Data](https://github.com/pandavshyam/ASP-NET-Applications/tree/master/RESTfulAPI_Using_StaticData)
+2. [Restaurant Application - Rest APIs](https://github.com/pandavshyam/ASP-NET-Applications/tree/master/RestfulRestaurantAPIs)
